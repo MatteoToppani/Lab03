@@ -22,4 +22,12 @@ public class Parola {
 		return this.parola;
 	}
 
+	public String getParola() {
+		return parola;
+	}
+
+	public void setParola(String parola) {
+		this.parola = parola;
+	}
+
 }

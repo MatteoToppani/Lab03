@@ -67,7 +67,7 @@ public class FXMLController {
 
     @FXML
     void Italiano(ActionEvent event) {
-    	//if(model.getItaliano().size()==0)
+    	if(model.getItaliano().size()==0)
     		model.LoadDictionary("Italiano");
     	model.setScelta(false);
     }

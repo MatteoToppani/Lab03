@@ -16,7 +16,7 @@ public class Dictionary {
 	public void LoadDictionary(String language) {
 		if (language.equals("English")) {
 			try {
-				FileReader fr = new FileReader("English.txt");
+				FileReader fr = new FileReader("src/main/resources/English.txt");
 				BufferedReader br = new BufferedReader(fr);
 				String word;
 				while ((word = br.readLine()) != null) {
@@ -31,7 +31,7 @@ public class Dictionary {
 
 		} else {
 			try {
-				FileReader fr = new FileReader("Italian.txt");
+				FileReader fr = new FileReader("src/main/resources/Italian.txt");
 				BufferedReader br = new BufferedReader(fr);
 				String word;
 				while ((word = br.readLine()) != null) {
@@ -48,28 +48,31 @@ public class Dictionary {
 	}
 	
 	public List<Parola> Controlla(String frase) {
+		boolean controllo;
 		frase.replaceAll("[.,\\/#!$%\\^&\\*;:{}=\\-_`~()\\[\\]\"]", "");
 		List<Parola> sbagliate = new LinkedList<Parola>();
 		String campi[];
 		campi = frase.split(" ");
 		if(scelta == true) {
 			for(String s : campi) {
+				controllo = false;
 				Parola p = new Parola(s);
-				if(Inglese.contains(p))
-					p.setGiusta(true);
-				else
+				for(Parola o : Inglese)
+					if(o.getParola().equals(s))
+						controllo = true;
+				if(controllo == false)
 					sbagliate.add(p);
-					
 			}
 		}
 		else {
 			for(String s : campi) {
+				controllo = false;
 				Parola p = new Parola(s);
-				if(Italiano.contains(p))
-					p.setGiusta(true);
-				else
+				for(Parola o : Italiano)
+					if(o.getParola().equals(s))
+						controllo = true;
+				if(controllo == false)
 					sbagliate.add(p);
-					
 			}
 			
 		}
